@@ -32,7 +32,7 @@ MIT License
 ## Links
 
 - Github: [certificateDeposit-calculator] (https://github.com/juhunuque/certificateDeposit-calculator)
-- Sample: [http://www.desarrollosnunez.net/cdCalculator/index.htm] (http://www.desarrollosnunez.net/cdCalculator/index.htm)
+- Sample: [http://www.desarrollosnunez.net/cdCalculator/index.html] (http://www.desarrollosnunez.net/cdCalculator/index.html)
 - cbLibjs Library: [https://github.com/juhunuque/cdlibjs] (https://github.com/juhunuque/cdlibjs)
 - ngAnimate: [https://docs.angularjs.org/api/ngAnimate] (https://docs.angularjs.org/api/ngAnimate)
 - angular-datepicker: [https://github.com/720kb/angular-datepicker#angular-datepicker] (https://github.com/720kb/angular-datepicker#angular-datepicker)
