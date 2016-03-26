@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Certification Deposit - Calculator</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="bower_components/Materialize/dist/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/animate.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="bower_components/Materialize/dist/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="bower_components/angular-toastr/dist/angular-toastr.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="bower_components/angularjs-datepicker/dist/angular-datepicker.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body ng-app="calcApp">
+    <header>
+      <nav class="light-blue darken-1" role="navigation">
+        <div class="nav-wrapper container">
+            <a id="logo-container" href="#" class="brand-logo">
+                Calculator
+            </a>
+          <ul class="right hide-on-med-and-down">
+        </ul>
+        </div>
+      </nav>
+    </header>
+    
+    <main>
+          <div class="container" style="margin-top:3%;" ng-controller="CalcCtrl">
+              <h3 class="center">Certificate Deposit Calculator</h3>
+
+<div class="fixed-action-btn" style="bottom: 45px; right: 24px;" ng-show="resultFlag">
+    <a class="btn-floating btn-large waves-effect waves-light red" ng-click="clean()">
+      <i class="large material-icons">delete</i>
+    </a>
+</div>
+
+<div class="row">
+    <form ng-submit="calculate()">
+        <div class="row">
+            <div class="input-field col s6 m6 l6">
+                <input id="capital" type="number"  ng-model="data.capital" min="0" class="validate" pattern="[0-9]+([\.,][0-9]+)?" step="any">
+                <label for="capital">Capital</label>
+            </div>
+
+            <div class="input-field col s6 m6 l6">
+                <input id="rate" type="number"  ng-model="data.rate" min="0" class="validate" pattern="[0-9]+([\.,][0-9]+)?" step="any">
+                <label for="rate">Anual Rate</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s6 m6 l6">
+                <datepicker date-format="MM/dd/yyyy" date-typer="true"  >
+                  <input ng-model="data.startDate" type="text" placeholder="Start Date" id="startDate"/>
+                </datepicker>
+            </div>
+
+            <div class="input-field col s6 m6 l6">  
+                <datepicker date-format="MM/dd/yyyy" date-typer="true" >
+                  <input ng-model="data.endDate" type="text" id="endDate" placeholder="End Date" />
+                </datepicker>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s6 m6 l6">
+                <input id="days" type="number"  ng-model="data.days" min="0" class="validate" pattern="[0-9]+([\.,][0-9]+)?" step="any">
+                <label for="days"># Days</label>
+            </div>
+
+            <div class="input-field col s6 m6 l6">
+                <input id="interest" type="number"  ng-model="data.interest" min="0" class="validate" pattern="[0-9]+([\.,][0-9]+)?" step="any">
+                <label for="interest">Interest</label>
+            </div>
+            
+        </div>
+        
+        <button class="btn waves-effect waves-light indigo darken-1 btn-floating right" type="submit" >
+                <i class="material-icons left">settings</i>
+            </button>
+    </form>
+</div>
+
+<table ng-show="resultFlag" class="striped centered">
+        <thead>
+          <tr>
+              <th data-field="id">Calculating</th>
+              <th data-field="name">Formula</th>
+              <th data-field="price">Result</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="result in resultsData">
+            <td>{{result.title}}</td>
+            <td>{{result.description}}</td>
+            <td ng-if="result.isCurrency">{{result.result | currency : '$' : fractionSize}}</td>
+            <td ng-if="!result.isCurrency">{{result.result | number:2}}</td>
+          </tr>
+        </tbody>
+      </table>
+          </div>
+    </main>
+    <br><br>
+    
+    <footer class="page-footer light-blue darken-1">
+      <div class="container">
+          <span>&copy;Julio Núñez Quesada - <a class="white-text" href="https://github.com/juhunuque/certificateDeposit-calculator">Github</a></span>
+      </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="bower_components/angular/angular.min.js"></script>
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="js/cdLib.min.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/controllers/calculator.controller.js"></script>
+  <script src="bower_components/Materialize/dist/js/materialize.min.js"></script>
+  <script src="bower_components/angular-toastr/dist/angular-toastr.min.js"></script>
+  <script src="bower_components/angular-toastr/dist/angular-toastr.tpls.min.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+  <script src="bower_components/angularjs-datepicker/dist/angular-datepicker.min.js"></script>
+  
+  </body>
+</html>
